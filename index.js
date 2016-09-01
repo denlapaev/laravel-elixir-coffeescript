@@ -4,6 +4,12 @@ var Elixir = require('laravel-elixir');
 var config = Elixir.config;
 var coffee;
 
+config.js.coffee = {
+    'folder': 'coffee',
+    // https://github.com/wearefractal/gulp-coffee#options
+    options: {}
+};
+
 /*
  |----------------------------------------------------------------
  | CoffeeScript Compilation
@@ -37,12 +43,6 @@ Elixir.extend('coffee', function(src, output, options) {
     var paths;
 
     coffee = require('gulp-coffee');
-
-    config.js.coffee = {
-        'folder': 'coffee',
-        // https://github.com/wearefractal/gulp-coffee#options
-        options: {}
-    };
 
     new Elixir.Task('coffee', function() {
         return gulpTask.call(this, paths, options);
